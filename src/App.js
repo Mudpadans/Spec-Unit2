@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import Header from './Components/Header.jsx'
+import MovieScreen from './Components/MovieScreen.jsx';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
 
   const [watchlist, setWatchlist] = useState([]);
 
-  const [page, setPage] = useState([]);
+  const [page, setPage] = useState(1);
 
   const getData = () => {
     axios
@@ -29,6 +30,14 @@ function App() {
   return (
     <div className="App">
       <Header />
+        <main>
+          <MovieScreen 
+            movieList={movieList}
+            page={page}
+            setPage={setPage}
+            list={watchlist}
+          />
+        </main>
     </div>
   );
 }
